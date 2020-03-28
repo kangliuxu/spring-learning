@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.xkl.learning.spring.dependency.lookup.bean.User">
+        <property name="name" value="linfengmian"/>
+        <property name="age" value="25"/>
+    </bean>
+    <!--primary="true" 在类型有多个实例时，可以指定一个首要的-->
+    <bean id="superUser" class="com.xkl.learning.spring.dependency.lookup.bean.SuperUser" parent="user" primary="true">
+        <property name="address" value="广州"/>
+    </bean>
+
+    <bean id="objectFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+        <property name="targetBeanName" value="user"/>
+    </bean>
+
+</beans>
